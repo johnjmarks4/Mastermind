@@ -1,0 +1,11 @@
+
+Select your code, and the computer will try and guess it.
+Your code will consist of four colored pegs. You may select your pegs
+from six colors: red, green, blue, purple, orange, or yellow. In order
+to win, the computer must guess both the color and the position of all
+four pegs. After each turn, the game will place a black peg to indicate
+pegs that the computer has guessed correctly, and place a white peg to
+indicate pegs where the computer has guessed the color but not the
+location. This is both to show the computer how warm it's guesses are and
+to show you how close the computer is getting! If it hasn't guessed
+correctly by the 12th try, you win. Now choose your code!

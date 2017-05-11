@@ -1,0 +1,7 @@
+
+Please enter your guess. Remember: there are four pegs. 
+You must enter their correct color AND order. The available
+colors are red, green, blue, purple, orange, and yellow. If
+you guess the correct color and location, a black peg will
+appear. If you guess a correct color but not it's location,
+a white peg will appear. What is your guess?
