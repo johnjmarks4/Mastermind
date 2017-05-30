@@ -1,10 +1,10 @@
 class Game
-  attr_accessor :display
+  attr_accessor :display, :player, :computer
   
   def initialize(game_name, player_name)
     @game_name = game_name
     @player_name = player_name
-    @display = ["      ", "     ", "     ", "     "]
+    @display = ["      ", "      ", "      ", "      "]
   end
   
   def assign_role(choice)
@@ -23,34 +23,21 @@ class Game
   
   def compare_guess_to_code(guess, code)
     i = 0
-    while i < code.length
+    while i < display.length
       if code[i] == guess[i]
         @display[i] = "black"
-      elsif code.include?guess[i]
+      elsif code.include?(guess[i])
         @display[i] = "white"
       else
-        @display[i] = "     "
+        @display[i] = "      "
       end
-      i += 1 
+      i += 1
     end
-  end
-
-  def player?
-    return @player
-  end
-  
-  def computer?
-    return @computer
-  end
-  
-  def display?
-    return @display
   end
   
   def winner?(codebreaker, codemaker)
-    if codebreaker.guess? == codemaker.code?
+    if codebreaker.guess == codemaker.code
       return true 
     end
   end
-
 end

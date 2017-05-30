@@ -1,41 +1,61 @@
 class Codebreaker
-  attr_accessor :guess
+  attr_accessor :pegs
   
   def initialize(name)
     @name = name
-    @available_colors = ["blue", "green", "orange", "purple", "red", "yellow"]
-    @guess = []
+    @pegs = []
+    @saved = []
+    4.times do
+      @pegs << Peg.new 
+    end
   end
   
   def randomly_guess(display)
-    i = 0
+    available_colors = ["blue", "green", "orange", "purple", "red", "yellow"]
 
-    if @guess == []
-      4.times do @guess << @available_colors[rand(5)]; end
-    end
-
-    @guess.map do |color|
-      if display[i] == "white" && @guess.count(display[i]) == 1 # if not already "a black"...
-        @guess[rand(4)] = @guess[i] #...then reuse color in random location
-      else
-        @guess[i] = @available_colors[rand(5)]
+    @pegs.each_with_index do |peg, i|
+      if display[i] == "black" #if black use for this peg again
+        peg.found_color = true
+      elsif display[i] == "white"
+        peg.avoid << peg.color #if white use for different peg, but not this one
+        @saved << peg.color
+      elsif peg.color != nil
+        @pegs.each { |peg| peg.avoid << peg.color } #if "    " don't use for any peg
       end
-    i += 1
+
+      if peg.found_color == false
+        if peg.color.nil? || peg.avoid.include?(peg.color)
+          colors = available_colors - peg.avoid
+          if @saved == []
+            peg.color = colors[rand(colors.length)]
+          elsif @saved.any? { |saved| colors.include?(saved) }
+            peg.color = @saved.detect { |saved| colors.include?(saved) }
+            @saved.delete(peg.color)
+          end
+        end
+      end
     end
-    
-    @guess
+
+    guess = []
+    @pegs.each { |peg| guess << peg.color }
+    return guess
   end
   
   def manually_guess(input)
-    input.gsub!("  ", " ").downcase!
+    input.gsub!("  ", " ")
     input.gsub!("  ", " ")
     input.gsub!(", ", " ")
     input.gsub!(",", " ")
-    @guess = input.split(" ")
+    guess = input.split(" ")
+  end  
+end
+
+class Peg
+  attr_accessor :avoid, :found_color, :color
+
+  def initialize
+    @avoid = []
+    @found_color = false
+    @color = nil
   end
-  
-  def guess?
-    return @guess
-  end
-  
 end

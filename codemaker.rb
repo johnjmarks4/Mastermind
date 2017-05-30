@@ -15,7 +15,6 @@ class Codemaker
   end
   
   def manually_make_code(input)
-    input.downcase!
     input = input.gsub(/,/, ", ") 
     @code = input.split(",")
     @code[0] = @code[0] + " "
@@ -23,9 +22,4 @@ class Codemaker
     @code = input.split(" ")
     @code
   end
-  
-  def code?
-    return @code
-  end
-  
 end

@@ -1,11 +1,13 @@
+OK, here are the rules for the codemaker:
 
-Select your code, and the computer will try and guess it.
-Your code will consist of four colored pegs. You may select your pegs
-from six colors: red, green, blue, purple, orange, or yellow. In order
-to win, the computer must guess both the color and the position of all
-four pegs. After each turn, the game will place a black peg to indicate
-pegs that the computer has guessed correctly, and place a white peg to
-indicate pegs where the computer has guessed the color but not the
-location. This is both to show the computer how warm it's guesses are and
-to show you how close the computer is getting! If it hasn't guessed
-correctly by the 12th try, you win. Now choose your code!
+Type a four color pattern below like this "Red, Green, Orange, Yellow". The computer will try to guess all four colors and the order they occur in. Each turn the computer will see feedback on how it is doing:
+
+1. If the computer guesses the correct color but the wrong place, the word "white" will appear.
+
+2. If the computer guesses both the color and the place correctly, the word "black" will appear.
+
+3. If the computer gets neither right, that place in the code will remain blank.
+
+With each turn, the computer will inch a little closer to the code. If the computer guesses correctly by the 12th turn, you lose; but if you stump the computer after 12 turns you win!
+
+Now choose your code! The colors you have are: red, green, blue, purple, orange, and yellow.
