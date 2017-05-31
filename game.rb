@@ -4,7 +4,7 @@ class Game
   def initialize(game_name, player_name)
     @game_name = game_name
     @player_name = player_name
-    @display = ["      ", "      ", "      ", "      "]
+    @display = [" ", " ", " ", " "]
   end
   
   def assign_role(choice)

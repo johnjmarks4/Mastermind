@@ -5,6 +5,7 @@ class Codebreaker
     @name = name
     @pegs = []
     @saved = []
+    @avoid_all = []
     4.times do
       @pegs << Peg.new 
     end
@@ -19,18 +20,26 @@ class Codebreaker
       elsif display[i] == "white"
         peg.avoid << peg.color #if white use for different peg, but not this one
         @saved << peg.color
-      elsif peg.color != nil
-        @pegs.each { |peg| peg.avoid << peg.color } #if "    " don't use for any peg
+      elsif display[i] == "      "
+        @avoid_all << peg.color #if "    " don't use for any peg
+      end
+
+      @avoid_all.each do |color|
+        peg.avoid << color
       end
 
       if peg.found_color == false
-        if peg.color.nil? || peg.avoid.include?(peg.color)
+        if peg.color.nil?
+          peg.color = available_colors[rand(6)]
+        elsif peg.avoid.include?(peg.color)
           colors = available_colors - peg.avoid
           if @saved == []
             peg.color = colors[rand(colors.length)]
           elsif @saved.any? { |saved| colors.include?(saved) }
             peg.color = @saved.detect { |saved| colors.include?(saved) }
             @saved.delete(peg.color)
+          else
+            peg.color = colors[rand(colors.length)]
           end
         end
       end
