@@ -74,7 +74,7 @@ if player.class == Codemaker
   end
 
   while turns <= 12
-    guess = computer.randomly_guess(my_game.display)
+    guess = computer.computer_guess(my_game.display)
 
     if guess == code
       puts "Oh no! The computer correctly guessed your code #{code}! You've lost!"

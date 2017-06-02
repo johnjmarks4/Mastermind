@@ -11,7 +11,7 @@ class Codebreaker
     end
   end
   
-  def randomly_guess(display)
+  def computer_guess(display)
     available_colors = ["blue", "green", "orange", "purple", "red", "yellow"]
 
     @pegs.each_with_index do |peg, i|
