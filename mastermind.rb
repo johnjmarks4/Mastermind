@@ -30,6 +30,11 @@ if player.class == Codebreaker
     input.downcase!
     guess = player.manually_guess(input)
 
+    while code.join == "rules"
+      puts File.read("codebreaker_rules.txt")
+      code = player.manually_make_code(gets.chomp)
+    end
+
     until guess.all? { |color| ["red", "green", "blue", "purple", "orange", "yellow"].include?(color) }
       if guess == ["rules"]
         puts File.read("codebreaker_rules.txt")
@@ -68,7 +73,7 @@ if player.class == Codemaker
   input.downcase!
   code = player.manually_make_code(input)
 
-  while code == "rules"
+  while code.join == "rules"
     puts File.read("codemaker_rules.txt")
     code = player.manually_make_code(gets.chomp)
   end
